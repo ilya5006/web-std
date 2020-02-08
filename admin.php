@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!$_SESSION['is_admin']){
+if (!$_SESSION['is_admin'])
+{
     header('Location: ./authorization.html');
 }
 ?>
@@ -23,7 +24,6 @@ if (!$_SESSION['is_admin']){
 <body>
     <a href="./index.php" style="color: #000000;">НА ГЛАВНУЮ</a>
     <div class="wrapper">
-        
             <div class="feedback">
                 <div class="feedback-header">
                     <p class="name-request">ФИО</p>
@@ -36,7 +36,7 @@ if (!$_SESSION['is_admin']){
                 </div>
                 <div class="all-requests">
                     <?php 
-                        require_once ('php/feedback.php');
+                        require_once ('./php/feedbacks.php');
                     ?>
                 </div>
             </div>
@@ -113,10 +113,9 @@ if (!$_SESSION['is_admin']){
                 </div>
                 <div class="all-wrapper">
                     <?php 
-                        require_once ('php/archive.php');
+                        require_once ('./php/archive.php');
                     ?>
-                </div> 
-                
+                </div>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ var swiperOne = new Swiper('.swiper-container-our',
 
 var swiperTwo = new Swiper('.swiper-container', 
 {
-  navigation: 
+  navigation:
   {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',

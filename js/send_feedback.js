@@ -11,7 +11,7 @@ let sendFeedback = async (event) =>
     form.append('email_feedback', emailValue);
     form.append('description_feedback', textValue);
 
-    let fetchResponse = await fetch('../php/adding_feedback.php', 
+    let fetchResponse = await fetch('../php/send_feedback.php', 
     {
         method: 'POST',
         body: form

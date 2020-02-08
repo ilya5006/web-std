@@ -1,18 +1,18 @@
 <?php
     require_once __DIR__ . './connection.php';
-    
-    $titleNews = $_REQUEST['title_news'];
-    $textNews = $_REQUEST['text_news'];
 
-    // Берём последний ID новости, чтобы в дальнейшем создать папку с ID на единицу больше 
-    $lastIdNews = (int)Database::query("SELECT id_news FROM news ORDER BY id_news DESC")['id_news'];
+    $titleNews = htmlentities($connection->escapeString($_REQUEST['title_news']));
+    $textNews = htmlentities($connection->escapeString($_REQUEST['text_news']));
+
+    // Берём последний ID новости, чтобы в дальнейшем создать папку с ID на единицу больше
+    $lastIdNews = (int)$connection->query("SELECT `id_news` FROM `news` ORDER BY `id_news` DESC")['id_news'];
     $lastIdNews++;
 
     $dateNews = date('Y-m-d H:i');
 
     if ($_FILES['image_news']['error'] == UPLOAD_ERR_NO_FILE)
     {
-        die("<p class='add_news_response'>Произошла ошибка при отправке изображения</p>");
+        die('Произошла ошибка при отправке изображения');
     }
 
     $uploadedImage = $_FILES['image_news'];
@@ -21,9 +21,8 @@
     $errorCode = $uploadedImage['error'];
 
     if ($errorCode != UPLOAD_ERR_OK)
-    {
-        
-        die("<p class='add_news_response'>Произошла ошибка при отправке изображения</p>");
+    {   
+        die('Произошла ошибка при отправке изображения');
     }
 
     $fi = finfo_open(FILEINFO_MIME_TYPE);
@@ -31,8 +30,7 @@
 
     if (strpos($mime, 'image') === false)
     {
-        
-        die("<p class='add_news_response'>Можно загружать только изображения</p>");
+        die('Можно загружать только изображения');
     }
     $image = getimagesize($imagePath);
 
@@ -47,18 +45,15 @@
 
     if (filesize($imagePath) > $limitBytes)
     {
-
-        die("<p class='add_news_response'>Размер изображения не должен превышать 5 Мбайт</p>");
+        die('Размер изображения не должен превышать 5 Мбайт');
     }
     if ($imageHeight > $limitHeight)
     {
-        
-        die("<p class='add_news_response'>Высота изображения не должна превышать 720 точек</p>");
+        die('Высота изображения не должна превышать 720 точек');
     }
     if ($imageWidth > $limitWidth)
     {
-        
-        die("<p class='add_news_response'>Ширина изображения не должна превышать 1280 точек</p>");
+        die('Ширина изображения не должна превышать 1280 точек');
     }
 
     $name = md5_file($imagePath);
@@ -76,17 +71,17 @@
 
     if (!move_uploaded_file($imagePath, $imageFullPath))
     {
-        die("При записи изображения на диск произошла ошибка");
+        die('При записи изображения на диск произошла ошибка');
     }
-    
-    $response = Database::queryExecute("INSERT INTO news VALUES ('$lastIdNews', '$titleNews', '$textNews', '$dateNews', 'active', '$imageNameFormat')");
+
+    $response = $connection->queryExecute("INSERT INTO `news` VALUES ('$lastIdNews', '$titleNews', '$textNews', '$dateNews', 'active', '$imageNameFormat')");
 
     if ($response)
     {
-        echo '<p class="add_news_response">Новость успешно добавлена</p>';
+        echo 'Новость успешно добавлена';
     }
     else
     {
-        echo '<p class="add_news_response">Во время добавления новости произошла ошибка, попробуйте снова</p>';
+        echo 'Во время добавления новости произошла ошибка, попробуйте снова';
     }
 ?>
