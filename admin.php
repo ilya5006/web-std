@@ -21,8 +21,7 @@ if (!$_SESSION['is_admin']){
     <title>Админ-панель</title>
 </head>
 <body>
-
-    <a href="partOfPage.php" style="color: #000000;">НА ГЛАВНУЮ</a>
+    <a href="./index.php" style="color: #000000;">НА ГЛАВНУЮ</a>
     <div class="wrapper">
         
             <div class="feedback">
