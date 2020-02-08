@@ -20,7 +20,7 @@ class Database
      * @param string $query String of query
      * @return array Result of query ['1', '2']
      */
-    public function query($query)
+    public function query(string $query)
     {
         $queryResult = $this->mysqli->query($query);
         return $queryResult->fetch_assoc();
@@ -31,7 +31,7 @@ class Database
      * @param string $query String of query
      * @return array Result of query [['1', '2'], ['3', '4']]
      */
-    public function queryAll($query)
+    public function queryAll(string $query)
     {
         $queryResult = $this->mysqli->query($query);
         return $queryResult->fetch_all(MYSQLI_ASSOC);
@@ -42,10 +42,20 @@ class Database
      * @param string $query String of query
      * @return bool Result of query (success or unsuccess)
      */
-    public function queryExecute($query)
+    public function queryExecute(string $query)
     {
         return $this->mysqli->query($query);
     }
+
+    /**
+     * Escapes a string
+     * @param string $query String that is to be escaped
+     * @return string The escaped string
+     */
+    public function escapeString(string $query)
+    {
+        return $this->mysqli->escape_string($query);
+    }
 }
-$mysqlDatabase = new Database('localhost', 'root', '', 'web-studio');
+$connection = new Database('localhost', 'root', '', 'web-studio');
 ?>
