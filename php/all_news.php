@@ -4,7 +4,7 @@
 
     $allNews = $connection->queryAll("SELECT * FROM `news` WHERE `status_news` = 'active'");
 
-    foreach($allNews as $rowNews )
+    foreach($allNews as $rowNews)
     {
         $idNews = $rowNews['id_news'];
         $photoNews = $rowNews['photo_news'];
