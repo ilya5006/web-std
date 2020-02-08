@@ -11,9 +11,11 @@ if (!$_SESSION['is_admin']){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="./styles/general.css">
+    <link rel="stylesheet" href="./styles/admin.css">
+    <link rel="stylesheet" href='./styles/pop-up_messages.css'>
 
+    <script src="./js/pop-up_message.js" defer></script>
     <script src="./js/send_news.js" defer></script>
     
     <title>Админ-панель</title>

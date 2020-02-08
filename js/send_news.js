@@ -19,7 +19,7 @@ let sendNews = async (event) =>
 
     let textResponse = await fetchResponse.text();
 
-    document.querySelector('body').insertAdjacentHTML('beforeEnd', textResponse);
+    showMessage(textResponse);
 }
 
 let sendNewsButton = document.querySelector('.new-news-wrapper input[type="submit"]');

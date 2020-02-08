@@ -1,0 +1,13 @@
+.messages
+{
+    position: fixed;
+	bottom: 25px;
+    right: 25px;
+    background-color: #FFFFFF;
+}
+
+.messages p
+{
+    padding: 20px;
+	border: 1px solid #000000;
+}

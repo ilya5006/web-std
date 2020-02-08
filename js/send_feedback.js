@@ -19,7 +19,7 @@ let sendFeedback = async (event) =>
 
     let textResponse = await fetchResponse.text();
 
-    document.querySelector('body').insertAdjacentHTML('beforeEnd', textResponse);
+    showMessage(textResponse);
 }
 
 let sendFeedbackButton = document.querySelector('#feedback_form input[type="submit"]');
