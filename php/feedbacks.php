@@ -1,9 +1,9 @@
 <?php
 	require_once __DIR__ . './connection.php';
 
-	$feedbacks = $connection->queryAll("SELECT * FROM `feedbacks`");
+	$allFeedbacks = $connection->queryAll("SELECT * FROM `feedbacks`");
 
-	foreach ($feedbacks as $feedback){
+	foreach ($allFeedbacks as $feedback){
 		echo '
 			<div class="inner-news-archive">
 				<p class="name-request">' . $feedback['fio_feedback'] . '</p>

@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (!$_SESSION['is_admin'])
-{
-    header('Location: ./authorization.html');
-}
+    session_start();
+    if (!$_SESSION['is_admin'])
+    {
+        header('Location: ./authorization.html');
+    }
 ?>
 
 <!DOCTYPE html>
