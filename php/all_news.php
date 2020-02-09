@@ -1,5 +1,4 @@
 <?php
-
     require_once __DIR__ . './connection.php';
 
     $allNews = $connection->queryAll("SELECT * FROM `news` WHERE `status_news` = 'active'");
